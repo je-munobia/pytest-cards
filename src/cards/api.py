@@ -2,9 +2,7 @@
 API for the cards project
 """
 
-from dataclasses import asdict
-from dataclasses import dataclass
-from dataclasses import field
+from dataclasses import asdict, dataclass, field
 
 from .db import DB
 

@@ -1,6 +1,5 @@
 import cards
 
-
 expected_output = """\
 
   ID   state   owner   summary    

@@ -1,7 +1,9 @@
-from typer.testing import CliRunner
-import cards
-import pytest
 import shlex
+
+import pytest
+from typer.testing import CliRunner
+
+import cards
 
 runner = CliRunner()
 
