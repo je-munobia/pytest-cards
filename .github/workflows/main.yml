@@ -13,6 +13,7 @@ jobs:
         with:
           python-version: 3.12
       - name: Install Tox and any other packages
+        # Possibly cache pip for python version and format
         run: pip install tox
       - name: Run format check
         run: tox -e format
@@ -27,9 +28,25 @@ jobs:
         with:
           python-version: 3.12
       - name: Install Tox and any other packages
+        # Possibly cache pip for python version and lint
         run: pip install tox
       - name: Run lint check
         run: tox -e lint
+
+  typecheck:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: 3.12
+      - name: Install Tox and any other packages
+        # Possibly cache pip for python version and lint
+        run: pip install tox
+      - name: Run typecheck
+        run: tox -e typecheck
 
   test:
     runs-on: ubuntu-latest
@@ -44,6 +61,8 @@ jobs:
         with:
           python-version: ${{ matrix.python }}
       - name: Install Tox and any other packages
+        # Possibly cache pip for python version
         run: pip install tox
       - name: Run tests
+        # Possibly cache .tox for python version
         run: tox -e py

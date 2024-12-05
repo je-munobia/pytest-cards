@@ -3,6 +3,7 @@ API for the cards project
 """
 
 from dataclasses import asdict, dataclass, field
+from typing import Optional
 
 from .db import DB
 
@@ -17,10 +18,10 @@ __all__ = [
 
 @dataclass
 class Card:
-    summary: str = None
-    owner: str = None
-    state: str = "todo"
-    id: int = field(default=None, compare=False)
+    summary: Optional[str] = None
+    owner: Optional[str] = None
+    state: Optional[str] = "todo"
+    id: Optional[int] = field(default=None, compare=False)
 
     @classmethod
     def from_dict(cls, d):
@@ -65,7 +66,7 @@ class CardsDB:
         else:
             raise InvalidCardId(card_id)
 
-    def list_cards(self, owner=None, state=None):
+    def list_cards(self, owner: Optional[str] = None, state: Optional[str] = None):
         """Return a list of cards."""
         all = self._db.read_all()
         if (owner is not None) and (state is not None):
