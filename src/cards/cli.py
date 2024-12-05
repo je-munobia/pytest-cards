@@ -1,16 +1,16 @@
 """Command Line Interface (CLI) for cards project."""
 
 import os
-from io import StringIO
 import pathlib
-import rich
-from rich.table import Table
 from contextlib import contextmanager
+from io import StringIO
 from typing import List
 
-import cards
-
+import rich
 import typer
+from rich.table import Table
+
+import cards
 
 app = typer.Typer(add_completion=False)
 
@@ -66,7 +66,7 @@ def list_cards(
 def update(
     card_id: int,
     owner: str = typer.Option(None, "-o", "--owner"),
-    summary: List[str] = typer.Option(None, "-s", "--summary"),
+    summary: List[str] = typer.Option(None, "-s", "--summary"), # noqa: B008
 ):
     """Modify a card in db with given id with new info."""
     summary = " ".join(summary) if summary else None
@@ -122,10 +122,7 @@ def main(ctx: typer.Context):
 
 def get_path():
     db_path_env = os.getenv("CARDS_DB_DIR", "")
-    if db_path_env:
-        db_path = pathlib.Path(db_path_env)
-    else:
-        db_path = pathlib.Path.home() / "cards_db"
+    db_path = pathlib.Path(db_path_env) if db_path_env else pathlib.Path.home() / "cards_db"
     return db_path
 
 

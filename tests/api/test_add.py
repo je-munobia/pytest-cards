@@ -8,6 +8,7 @@ Test Cases
 """
 
 import pytest
+
 from cards import Card, MissingSummary
 
 

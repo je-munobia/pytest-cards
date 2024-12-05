@@ -17,6 +17,20 @@ jobs:
       - name: Run format check
         run: tox -e format
 
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: 3.12
+      - name: Install Tox and any other packages
+        run: pip install tox
+      - name: Run lint check
+        run: tox -e lint
+
   test:
     runs-on: ubuntu-latest
     strategy:
