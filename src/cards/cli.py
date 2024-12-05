@@ -66,7 +66,7 @@ def list_cards(
 def update(
     card_id: int,
     owner: str = typer.Option(None, "-o", "--owner"),
-    summary: List[str] = typer.Option(None, "-s", "--summary"), # noqa: B008
+    summary: List[str] = typer.Option(None, "-s", "--summary"),  # noqa: B008
 ):
     """Modify a card in db with given id with new info."""
     summary = " ".join(summary) if summary else None
