@@ -19,7 +19,7 @@ dynamic = ["version", "description"]
 dependencies = [
     "tinydb==4.8.2",
     "typer==0.3.2",
-    "rich==10.7.0"
+    "rich==13.9.4"
 ]
 
 [project.optional-dependencies]
