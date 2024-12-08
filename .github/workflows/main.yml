@@ -1,6 +1,10 @@
 name: CI
 
-on: [push, pull_request]
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
 
 jobs:
   format:
@@ -8,61 +12,44 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-      - name: Setup Python
-        uses: actions/setup-python@v5
+      - uses: actions/setup-python@v5
         with:
           python-version: 3.12
-      - name: Install Tox and any other packages
-        # Possibly cache pip for python version and format
-        run: pip install tox
-      - name: Run format check
-        run: tox -e format
+      - run: pip install tox
+      - run: tox -e format
 
   lint:
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v4
-      - name: Setup Python
-        uses: actions/setup-python@v5
+      - uses: actions/setup-python@v5
         with:
           python-version: 3.12
-      - name: Install Tox and any other packages
-        # Possibly cache pip for python version and lint
-        run: pip install tox
-      - name: Run lint check
-        run: tox -e lint
+      - run: pip install tox
+      - run: tox -e lint
 
   typecheck:
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v4
-      - name: Setup Python
-        uses: actions/setup-python@v5
+      - uses: actions/setup-python@v5
         with:
           python-version: 3.12
-      - name: Install Tox and any other packages
-        # Possibly cache pip for python version and lint
-        run: pip install tox
-      - name: Run typecheck
-        run: tox -e typecheck
+      - run: pip install tox
+      - run: tox -e typecheck
 
   test:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python: ["3.9", "3.10", "3.11", "3.12"]
+        python: ["3.10", "3.11", "3.12"]
 
     steps:
       - uses: actions/checkout@v4
-      - name: Setup Python
-        uses: actions/setup-python@v5
+      - uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python }}
-      - name: Install Tox and any other packages
-        # Possibly cache pip for python version
-        run: pip install tox
-      - name: Run tests
-        # Possibly cache .tox for python version
-        run: tox -e py
+      - run: pip install tox
+      - run: tox -e py
