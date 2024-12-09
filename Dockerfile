@@ -4,6 +4,6 @@
 #
 # docker build --platform linux/amd64 -t jexmse/python-tox:3.12.8-slim-bookworm .
 
-FROM python:3.12.8-slim-bookworm
+FROM python:3.13.1-slim-bookworm
 
 RUN pip install --no-cache-dir tox && rm -rf /root/.cache
