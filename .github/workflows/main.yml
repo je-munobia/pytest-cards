@@ -10,7 +10,7 @@ jobs:
   format:
     runs-on: ubuntu-latest
     container:
-      image: 'python:3.12.8-alpine3.20'
+      image: 'python:3.12.8-slim-bookworm'
 
     steps:
       - uses: actions/checkout@v4
