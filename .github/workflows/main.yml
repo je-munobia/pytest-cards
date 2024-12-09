@@ -64,11 +64,18 @@ jobs:
       - run: pip install tox
       - run: tox -e typecheck
 
+  test-container:
+    runs-on: ubuntu-latest
+    container:
+      image: 'python:3.12.8-alpine3.20'
+    steps:
+      - run: python3 --version
+
   test:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python: ["3.10", "3.11", "3.12"]
+        python: ["3.11", "3.12"]
 
     steps:
       - uses: actions/checkout@v4
