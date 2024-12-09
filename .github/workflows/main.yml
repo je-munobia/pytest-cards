@@ -11,37 +11,20 @@ jobs:
     runs-on: ubuntu-latest
     container:
       # Alternative to installing python, use a supported base os.
-      image: 'python:3.12.8-slim-bookworm'
+      # Simple verification of image that could be used for private runners
+      image: 'jexmse/python-tox:3.12.8-slim-bookworm'
 
     steps:
       - uses: actions/checkout@v4
-      - name: Cache tox
-        uses: actions/cache@v4
-        with:
-          path: '.tox'
-          key: format-3.12.8-${{ hashFiles('pyproject.toml', 'tox.ini') }}
-          restore-keys: |
-            format-3.12.8-
-      - run: pip install tox
       - run: tox -e format
 
   lint:
     runs-on: ubuntu-latest
+    container:
+      image: 'jexmse/python-tox:3.12.8-slim-bookworm'
 
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with:
-          python-version: '3.12'
-          cache: 'pip'
-      - name: Cache tox
-        uses: actions/cache@v4
-        with:
-          path: '.tox'
-          key: lint-3.12-${{ hashFiles('pyproject.toml', 'tox.ini') }}
-          restore-keys: |
-            lint-3.12-
-      - run: pip install tox
       - run: tox -e lint
 
   typecheck:
