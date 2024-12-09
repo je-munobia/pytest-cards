@@ -10,9 +10,7 @@ jobs:
   format:
     runs-on: ubuntu-latest
     container:
-      # Alternative to installing python, use a supported base os.
-      # Simple verification of image that could be used for private runners
-      image: 'jexmse/python-tox:3.12.8-slim-bookworm'
+      image: 'jexmse/python-tox:3.13.1-slim-bookworm'
 
     steps:
       - uses: actions/checkout@v4
@@ -21,7 +19,7 @@ jobs:
   lint:
     runs-on: ubuntu-latest
     container:
-      image: 'jexmse/python-tox:3.12.8-slim-bookworm'
+      image: 'jexmse/python-tox:3.13.1-slim-bookworm'
 
     steps:
       - uses: actions/checkout@v4
