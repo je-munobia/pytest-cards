@@ -10,6 +10,7 @@ jobs:
   format:
     runs-on: ubuntu-latest
     container:
+      # Alternative to installing python, use a supported base os.
       image: 'python:3.12.8-slim-bookworm'
 
     steps:
