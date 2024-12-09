@@ -9,13 +9,11 @@ on:
 jobs:
   format:
     runs-on: ubuntu-latest
+    container:
+      image: 'python:3.12.8-alpine3.20'
 
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with:
-          python-version: '3.12'
-          cache: 'pip'
       - name: Cache tox
         uses: actions/cache@v4
         with:
@@ -63,13 +61,6 @@ jobs:
             typecheck-3.12-
       - run: pip install tox
       - run: tox -e typecheck
-
-  test-container:
-    runs-on: ubuntu-latest
-    container:
-      image: 'python:3.12.8-alpine3.20'
-    steps:
-      - run: python3 --version
 
   test:
     runs-on: ubuntu-latest
