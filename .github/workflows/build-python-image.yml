@@ -1,0 +1,19 @@
+on: workflow_dispatch
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    steps:
+        - uses: actions/checkout@v4
+        # https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/workflow-commands-for-github-actions#setting-an-environment-variable
+        # Use the same version part of tag as the base image
+        - run: echo "IMAGE_TAG_VERSION=`grep 'FROM python:' Dockerfile | sed 's/^.*://'`" >> "$GITHUB_ENV"
+        - uses: docker/login-action@v3
+          with:
+            username: ${{ secrets.DOCKERHUB_USER }}
+            password: ${{ secrets.DOCKERHUB_PWD }}
+        - uses: docker/build-push-action@v5
+          with:
+            context: .
+            push: true
+            tags: jexmse/python-tox-2:${{ env.IMAGE_TAG_VERSION }}
