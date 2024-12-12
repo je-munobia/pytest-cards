@@ -1,6 +1,10 @@
 name: Build and push python image for CI
 
-on: workflow_dispatch
+on: 
+  push:
+    branches: ['main']
+    paths: ['Dockerfile']
+  workflow_dispatch:
 
 jobs:
   build-and-push:
