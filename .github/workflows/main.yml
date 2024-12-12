@@ -7,6 +7,16 @@ on:
     branches: [main]
 
 jobs:
+  lint-workflows:
+    # See: https://github.com/rhysd/actionlint/blob/main/docs/usage.md
+    runs-on: ubuntu-latest
+    container:
+      image: 'rhysd/actionlint:latest'
+    
+    steps:
+      - uses: actions/checkout@v4
+      - run: actionlint
+
   format:
     runs-on: ubuntu-latest
     container:
