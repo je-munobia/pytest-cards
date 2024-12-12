@@ -22,7 +22,7 @@ jobs:
   format:
     runs-on: ubuntu-latest
     container:
-      image: 'jexmse/python-tox:3.13.1-slim-bookworm'
+      image: 'jexmse/python-tox:latest'
 
     steps:
       - uses: actions/checkout@v4
@@ -31,7 +31,7 @@ jobs:
   lint:
     runs-on: ubuntu-latest
     container:
-      image: 'jexmse/python-tox:3.13.1-slim-bookworm'
+      image: 'jexmse/python-tox:latest'
 
     steps:
       - uses: actions/checkout@v4
