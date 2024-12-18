@@ -4,7 +4,6 @@ import os
 import pathlib
 from contextlib import contextmanager
 from io import StringIO
-from typing import List, Optional
 
 import rich
 import typer
@@ -22,9 +21,9 @@ def version():
 
 
 @app.command()
-def add(summary: List[str], owner: str = typer.Option(None, "-o", "--owner")):
+def add(summary: list[str], owner: str = typer.Option(None, "-o", "--owner")):
     """Add a card to db."""
-    joined_summary: Optional[str] = " ".join(summary) if summary else None
+    joined_summary: str | None = " ".join(summary) if summary else None
     with cards_db() as db:
         db.add_card(cards.Card(joined_summary, owner, state="todo"))
 
@@ -41,8 +40,8 @@ def delete(card_id: int):
 
 @app.command("list")
 def list_cards(
-    owner: Optional[str] = typer.Option(None, "-o", "--owner"),
-    state: Optional[str] = typer.Option(None, "-s", "--state"),
+    owner: str | None = typer.Option(None, "-o", "--owner"),
+    state: str | None = typer.Option(None, "-s", "--state"),
 ):
     """
     List cards in db.
@@ -66,10 +65,10 @@ def list_cards(
 def update(
     card_id: int,
     owner: str = typer.Option(None, "-o", "--owner"),
-    summary: List[str] = typer.Option(None, "-s", "--summary"),  # noqa: B008
+    summary: list[str] = typer.Option(None, "-s", "--summary"),  # noqa: B008
 ):
     """Modify a card in db with given id with new info."""
-    joined_summary: Optional[str] = " ".join(summary) if summary else None
+    joined_summary: str | None = " ".join(summary) if summary else None
     with cards_db() as db:
         try:
             db.update_card(card_id, cards.Card(joined_summary, owner, state=None))
