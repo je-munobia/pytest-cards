@@ -1,5 +1,4 @@
 # A recent official python image with a recent tox installed
-# Latest tox each time Dependabot upgrades the FROM image version
 #
 # Alternative to installing python in gha -- use a gha supported base os.
 #
@@ -7,4 +6,4 @@
 
 FROM python:3.13.1-slim-bookworm
 
-RUN pip install --no-cache-dir tox && rm -rf /root/.cache
+RUN pip install --no-cache-dir tox==4.23.2 && rm -rf /root/.cache
