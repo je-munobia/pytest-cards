@@ -3,7 +3,7 @@ cards
 
 Note: Copied form Brian Okken's code in the Pytest book
 
-Mainly used to test GitHub Actions and CI/CD with a Python package
+Mainly used to test GitHub Actions and CI/CD with an existing Python package
 
 Project task tracking / todo list
 
