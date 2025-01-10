@@ -7,6 +7,15 @@ Mainly used to test GitHub Actions and CI/CD with an existing Python package
 
 Project task tracking / todo list
 
+Architecture
+------------
+
+```mermaid
+flowchart LR
+    CLI --> API
+    API --> DB
+```
+
 Usage
 -----
 
