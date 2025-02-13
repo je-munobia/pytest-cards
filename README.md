@@ -7,6 +7,13 @@ Mainly used to test GitHub Actions and CI/CD with an existing Python package
 
 Project task tracking / todo list
 
+Build status on main
+--------------------
+
+* [![CI](https://github.com/je-munobia/pytest-cards/actions/workflows/ci.yml/badge.svg)](https://github.com/je-munobia/pytest-cards/actions/workflows/ci.yml)
+* [![Lint Dockerfile](https://github.com/je-munobia/pytest-cards/actions/workflows/lint-dockerfiles.yml/badge.svg)](https://github.com/je-munobia/pytest-cards/actions/workflows/lint-dockerfiles.yml)
+* [![Lint GitHub Actions Workflows](https://github.com/je-munobia/pytest-cards/actions/workflows/lint-workflows.yml/badge.svg)](https://github.com/je-munobia/pytest-cards/actions/workflows/lint-workflows.yml)
+
 Architecture
 ------------
 

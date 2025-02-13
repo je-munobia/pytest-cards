@@ -2,8 +2,8 @@ name: Lint Dockerfile
 
 on:
   pull_request:
-    branches: ['main']
-    paths: ['Dockerfile', '.github/workflows/lint-dockerfiles.yml']
+    branches: [main]
+    paths: [Dockerfile, .github/workflows/lint-dockerfiles.yml]
   workflow_dispatch:
 
 jobs:
@@ -16,4 +16,4 @@ jobs:
       - name: Lint Dockerfile
         uses: hadolint/hadolint-action@v3.1.0
         with:
-          dockerfile: "Dockerfile"
+          dockerfile: Dockerfile
