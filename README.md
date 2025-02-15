@@ -77,3 +77,20 @@ Here's a demo of how it works:
       start    Set a card state to 'in prog'.
       update   Modify a card in db with given id with new info.
       version  Return version of cards application
+
+Local CI verification
+=====================
+
+```bash
+# Test three python versions as configured in tox.ini
+tox 
+
+# Verify Python code formatting
+# extra parameters to underlying tool goes after --
+tox -e format
+
+# 
+tox -e lint
+
+tox -e typecheck
+```
