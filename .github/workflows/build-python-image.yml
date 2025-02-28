@@ -4,6 +4,9 @@ on:
   push:
     branches: [main]
     paths: [Dockerfile, requirements.txt, .github/workflows/build-python-image.yml]
+  schedule:
+    # Capture the case where Pythpon Linux distro (Debian) is bumped using the same tag
+    - cron: '30 5 * * 1'
   workflow_dispatch:
 
 jobs:
