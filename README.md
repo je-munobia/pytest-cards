@@ -79,18 +79,15 @@ Here's a demo of how it works:
       version  Return version of cards application
 
 Local CI verification
-=====================
+---------------------
 
 ```bash
 # Test three python versions as configured in tox.ini
 tox 
 
-# Verify Python code formatting
+# Static Python checks include format, lint and type checks
 # extra parameters to underlying tool goes after --
 tox -e format
-
-# 
 tox -e lint
-
 tox -e typecheck
 ```
