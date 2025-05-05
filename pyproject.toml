@@ -17,7 +17,7 @@ requires-python=">=3.11"
 dynamic = ["version", "description"]
 dependencies = [
     "tinydb==4.8.2",
-    "typer==0.15.2",
+    "typer==0.15.3",
     "rich==14.0.0"
 ]
 
