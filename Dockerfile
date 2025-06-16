@@ -5,7 +5,7 @@
 #
 # docker build --platform linux/amd64 -t jexmse/python-tox:<tag> .
 
-FROM python:3.13.4-slim
+FROM python:3.13.5-slim
 
 COPY requirements.txt /tmp/
 RUN pip install --no-cache-dir -r /tmp/requirements.txt && rm -rf /root/.cache
