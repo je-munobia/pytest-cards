@@ -13,7 +13,7 @@ def cards_cli_no_redirect():
     def run_cli(command_string):
         command_list = shlex.split(command_string)
         result = runner.invoke(cards.cli.app, command_list)
-        output = result.stdout.rstrip()
+        output = result.output.rstrip()
         return output
 
     return run_cli
